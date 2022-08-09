@@ -18,7 +18,7 @@ const Settings = observer(() => {
 		widgetState.changeWhiteList(e.target.previousSibling.id);
 		setWhiteList(widgetState.getWhiteList());
 	}
-	console.log(updateInterval);
+
 	return (
 		<div className='w-full h-full text-white text-center bg-gradient-to-r from-cyan-500 to-blue-500'>
 			<Link to='/' className='mt-8 p-2 bg-white rounded text-blue-500'>Назад</Link>

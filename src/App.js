@@ -19,7 +19,7 @@ const App = observer(() => {
     setValutes(widgetState.getCurrentValues());
     setValutesYesterday(widgetState.getYesterdayValues());
   }
-  console.log(widgetState.timer);
+
   setInterval(() => {
     fetchData();
   }, widgetState.timer);
