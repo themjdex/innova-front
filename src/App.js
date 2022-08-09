@@ -18,9 +18,11 @@ const App = observer(() => {
     await widgetState.setYesterdayValues(yesterday);
     setValutes(widgetState.getCurrentValues());
     setValutesYesterday(widgetState.getYesterdayValues());
-    console.log(valutesYesterday);
   }
-
+  console.log(widgetState.timer);
+  setInterval(() => {
+    fetchData();
+  }, widgetState.timer);
 
   useEffect(() => {
     setLoading(true);
@@ -29,10 +31,11 @@ const App = observer(() => {
   }, []);
 
   return (
-    <div className='w-full h-max md:h-full text-white text-center bg-gradient-to-r from-cyan-500 to-blue-500'>
+    <div className='w-full h-max text-white text-center bg-gradient-to-r from-cyan-500 to-blue-500'>
       <div className='flex flex-col w-6/12 mx-auto justify-center h-full'>
-        {loading ? <div>Идет загрузка...</div> : ''}
-        {valutes && <Widget valutes={valutes} yesterday={valutesYesterday} />}
+        {loading ?
+          <div className='h-max bg-gradient-to-r from-cyan-500 to-blue-500'>Идет загрузка...</div> :
+          <Widget valutes={valutes} yesterday={valutesYesterday} />}
       </div>
     </div>
   );
