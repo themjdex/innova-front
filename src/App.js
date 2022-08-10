@@ -11,7 +11,9 @@ const App = observer(() => {
   const [valutesYesterday, setValutesYesterday] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
+  /**
+   * Функция-активатор получения данных с сервера, записи в стейт и хуки
+   */
   const fetchData = async () => {
     await widgetState.setCurrentValues();
     let yesterday = moment().subtract(1, 'days').format('DD/MM/YYYY');
@@ -20,8 +22,16 @@ const App = observer(() => {
     setValutesYesterday(widgetState.getYesterdayValues());
   }
 
-  setInterval(() => {
+  /**
+   * Функция-активатор обновления данных на сервере
+   */
+  const update = async () => {
+    await widgetState.updateValues();
     fetchData();
+  }
+
+  setInterval(() => {
+    update();
   }, widgetState.timer);
 
   useEffect(() => {

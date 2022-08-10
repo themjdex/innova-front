@@ -6,9 +6,10 @@ import widgetState from '../store/widgetState';
 const Widget = observer(({ valutes, yesterday }) => {
 	const [diff, setDiff] = useState([]);
 
-
-
 	useEffect(() => {
+		/**
+		 * Функция высчитывает разницу курсов сегодняшнего и вчерашнего дня 
+		 */
 		const calculate = () => {
 			let diffValues = [];
 			for (let i = 0; i < valutes.length; i++) {
@@ -18,8 +19,6 @@ const Widget = observer(({ valutes, yesterday }) => {
 		}
 		calculate();
 	}, [valutes, yesterday]);
-
-
 
 	return (
 		<>
